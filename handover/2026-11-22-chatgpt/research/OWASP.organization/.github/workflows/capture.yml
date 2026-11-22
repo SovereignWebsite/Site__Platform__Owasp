@@ -1,0 +1,29 @@
+name: Capture OWASP project metadata
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: owasp-metadata-capture
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Capture and validate public metadata
+        run: python scripts/capture.py
+      - name: Commit research snapshot
+        run: |
+          git config user.name "PrompTugal data workflow"
+          git config user.email "prompTugal-workflow@users.noreply.github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "Capture dated OWASP project metadata"
+            git push
+          fi

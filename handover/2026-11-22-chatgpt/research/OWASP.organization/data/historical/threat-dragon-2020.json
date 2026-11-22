@@ -1,0 +1,34 @@
+{
+  "source_system": "GitHub project website source",
+  "repository": "OWASP/www-project-threat-dragon",
+  "commit_sha": "d5472040d2f595b92924823551a05bc4cd31521f",
+  "source_committed_at": "2020-12-31T07:35:39Z",
+  "captured_at": "2026-11-22T16:24:36.849318+00:00",
+  "source_url": "https://raw.githubusercontent.com/OWASP/www-project-threat-dragon/d5472040d2f595b92924823551a05bc4cd31521f/index.md",
+  "source_provenance": [
+    {
+      "requested_url": "https://api.github.com/repos/OWASP/www-project-threat-dragon/commits?per_page=1&until=2020-12-31T23:59:59Z",
+      "final_url": "https://api.github.com/repos/OWASP/www-project-threat-dragon/commits?per_page=1&until=2020-12-31T23:59:59Z",
+      "http_status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "access_control_allow_origin": "*",
+      "etag": "W/\"8182b66a5d5c1d9ccc2dfe247e9c9eebbc9fbe560a21972270ca33ed7b6f9841\"",
+      "body_sha256": "8182b66a5d5c1d9ccc2dfe247e9c9eebbc9fbe560a21972270ca33ed7b6f9841",
+      "fetched_at": "2026-11-22T16:24:34.417532+00:00"
+    },
+    {
+      "requested_url": "https://raw.githubusercontent.com/OWASP/www-project-threat-dragon/d5472040d2f595b92924823551a05bc4cd31521f/index.md",
+      "final_url": "https://raw.githubusercontent.com/OWASP/www-project-threat-dragon/d5472040d2f595b92924823551a05bc4cd31521f/index.md",
+      "http_status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "access_control_allow_origin": "*",
+      "etag": "\"3209566ca9dbafd7a876307badf339a2389580f7e5f1c3e0a0a03ecba382e25c\"",
+      "body_sha256": "a193197e63fa2fe261f723091aadbec7c91bf1058d9cd1bc3546d79046fb6903",
+      "fetched_at": "2026-11-22T16:24:36.849318+00:00"
+    }
+  ],
+  "content_format": "jekyll_markdown",
+  "content": "---\n\nlayout: col-sidebar\ntitle: OWASP Threat Dragon\ntags: threatdragon\nproject: true\nlevel: 2\ntype: tool\npitch: OWASP Threat Dragon provides a threat modelling application for teams implementing the STRIDE approach, either as a desktop or as a web application. Great for both developers and defenders alike\n\n---\n\n<style type=\"text/css\">\n.image-left {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  float: left;\n}\n.image-right {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n  float: right;\n}\n</style>\n\n![cupcake logo](/assets/images/cupcake-256x256.png){: .image-right }\n\n## What is Threat Dragon?\n\nOWASP Threat Dragon is a tool used to create threat model diagrams as part  of a secure development lifecycle.\nIt  can be used to record possible threats and decide on their mitigations, as well as giving a visual indication\nof the threat model components and threat surfaces.\n\nThreat Dragon runs either as a web application or a desktop application, with both varients based on the same common core.\nThis tool includes system diagramming as well as a rule engine to auto-generate threats and their mitigations.\nThe focus of Threat Dragon is on great UX, a powerful rule engine and alignment with other development lifecycle tools.\n\nThe [documentation](https://threatdragon.github.io) is a good starting point, and there is also a recording of Mike Goodwin\ngiving a [lightning demo](https://youtu.be/n6JGcZGFq5o) during the OWASP Open Security Summit in June 2020.\n\nThreat Dragon has a [demonstration page](https://threatdragon.org/login). This is on older version which is due to be\nupdated soon, and the notable difference is that we now have a desktop version that can be installed on linux - along\nwith Windows and MacOS.\n\n### Related Projects\n* [OWASP PyTM (Pythonic Threat Modeling)](https://owasp.org/www-project-pytm/)\n* [OWASP Threat Model Cookbook](https://owasp.org/www-project-threat-model-cookbook/)\n* [Threat Modeling OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)\n* [OWASP Threat Model Project](https://owasp.org/www-project-threat-model/)\n* [OWASP Threat Model Project (old pages)](https://wiki.owasp.org/index.php/OWASP_Threat_Model_Project#tab=Main)\n* [Threagile - Agile Threat Modeling](https://threagile.io) although it is not OWASP, it is open source\n\n### Company Collaborators\nMany thanks to these companies for donating various projects to Threat Dragon:\n* ![itx logo](/assets/images/itx-logo.png){: .image-left }\n* [ITX](https://www.itx.com) for Integration [Threat Modeling with Jira](https://github.com/OWASP/threat-dragon-core/blob/main/utils/threat-mvp/README.md)\n\n\n## OWASP participation\nThe Open Web Application Security Project (OWASP) is a nonprofit foundation that works to improve the security of\nsoftware. All of our projects, tools, documents, forums, and chapters are free and open to anyone interested in\nimproving application security. \n\nEveryone is welcome and encouraged to participate in our [Projects](/projects), [Local Chapters](/chapters),\n[Events](/events), [Online Groups](https://groups.google.com/a/owasp.com/){:target='_blank'},\nand [Community Slack Channel](https://owasp.slack.com/){:target='_blank'}. We especially encourage diversity\nin all our initiatives. OWASP is a fantastic place to learn about application security, to network, and even\nto build your reputation as an expert. We also encourage you to be [become a member](/membership) or consider\na [donation](/donate) to support our ongoing work.\n",
+  "coverage": "One historical project index. This does not establish full historical site coverage.",
+  "licence_status": "Confirm licence at this repository revision before public republication."
+}

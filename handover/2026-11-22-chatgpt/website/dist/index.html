@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore captured OWASP projects, evidence-based relationships, historical sources and an implementation handover for PrompTugal.">
+<title>OWASP Source Explorer · PrompTugal</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="sidebar">
+<a class="brand" href="#directory"><strong>PrompTugal<span>Research workspace</span></strong></a>
+<div class="workspace-name">OWASP<br>Source Explorer</div>
+<nav aria-label="Workspace">
+<a href="#directory" data-view="directory">Project directory</a>
+<a href="#graph" data-view="graph">Project graph</a>
+<a href="#archive" data-view="archive">Historical archive</a>
+<a href="#handover" data-view="handover">Agent handover</a>
+<a href="#spotify" data-view="spotify">Spotify review</a>
+</nav>
+<div class="side-bottom"><a href="downloads/PrompTugal-OWASP-Agent-Handover.docx" download>Download briefing</a><a href="downloads/OWASP-Organization-Research-Foundation.zip" download>Download data and collectors</a><a href="downloads/PrompTugal-Website-Source.zip" download>Download website source</a><span>Independent PrompTugal research<br>Sources checked 22 Nov 2026</span></div>
+</aside>
+<div class="page">
+<header class="topbar"><span>Browser access · Stored snapshots · Source history</span><a href="https://owasp.org/projects" target="_blank" rel="noopener">Visit OWASP</a></header>
+<main id="main" tabindex="-1">
+<section id="directory" class="view">
+<div class="eyebrow">CURRENT PROJECTS</div>
+<div class="heading-row"><div><h1>The OWASP project directory</h1><p class="lede">Explore a captured directory, inspect its sources, and request a live view.</p></div><button class="button" id="refresh">Load live from OWASP</button></div>
+<div class="snapshot-bar"><span id="snapshot-date">Loading captured snapshot…</span><span id="live-state" role="status" aria-live="polite"></span></div>
+<div class="metrics" id="metrics"></div>
+<div class="filters"><label class="search-label">Search projects<input id="project-search" type="search" placeholder="Search names, descriptions or categories"></label><label>Maturity<select id="level-filter"><option value="">All maturity levels</option></select></label><label>Category<select id="category-filter"><option value="">All categories</option></select></label></div>
+<div class="results-header"><span id="project-count" role="status"></span><span>Source fields preserved</span></div>
+<div id="project-grid" class="project-grid"></div>
+<div class="pagination"><button id="project-prev" class="secondary">Previous</button><span id="project-page"></span><button id="project-next" class="secondary">Next</button></div>
+<p class="footnote">Directory snapshot captured for research. Published categories and maturity labels are source values. Current API reuse terms need confirmation before public republication.</p>
+</section>
+<section id="graph" class="view" hidden>
+<div class="eyebrow">EVIDENCED RELATIONSHIPS</div><h1>Follow a project’s connections</h1><p class="lede">Explore explicit relationships to categories, maturity levels and source resources.</p>
+<label class="graph-picker">Choose a captured project<select id="graph-project"></select></label>
+<div class="graph-layout"><div class="graph-stage"><canvas id="graph-canvas" aria-label="Project relationships diagram"></canvas><p class="graph-help">Select a connected node to inspect its evidence.</p></div><div class="graph-evidence" id="graph-evidence"></div></div>
+<div id="graph-relations" class="relation-list"></div>
+<p class="footnote">These links come from published record fields. Additional semantic links would need evidence, a method and review status.</p>
+</section>
+<section id="archive" class="view" hidden>
+<div class="eyebrow">HISTORICAL SOURCES</div><h1>Find what came before</h1><p class="lede">Search a pinned catalogue of 7,265 old wiki Markdown paths and two captured page bodies.</p>
+<div class="archive-note"><strong>A catalogue with documented limits</strong><p>Original wiki revision history and archive completeness remain unverified. The older wiki host returned HTTP 403. Additional pages can be loaded directly from their pinned GitHub source.</p></div>
+<div class="filters archive-filters"><label>Search archive<input id="archive-search" type="search" placeholder="Try testing, authentication or threat"></label><label>Search coverage<select id="archive-mode"><option value="titles">Archive titles</option><option value="fulltext">Two captured page bodies</option></select></label></div>
+<p id="archive-status" role="status"></p><div id="archive-results" class="archive-results"></div>
+<div class="pagination"><button id="archive-prev" class="secondary">Previous</button><span id="archive-page"></span><button id="archive-next" class="secondary">Next</button></div>
+</section>
+<section id="handover" class="view prose" hidden>
+<div class="eyebrow">IMPLEMENTATION HANDOVER</div><h1>From research to a reusable service</h1><p class="lede">A concrete starting point for Claude or another coding agent working on PrompTugal’s workflows and RiskMandate Agent Behaviour Policies.</p>
+<div class="download-row"><a class="button" href="downloads/PrompTugal-OWASP-Agent-Handover.docx" download>Download the briefing</a><a class="secondary" href="downloads/OWASP-Organization-Research-Foundation.zip" download>Get data and collectors</a><a class="secondary" href="downloads/PrompTugal-Website-Source.zip" download>Get website source</a><button id="copy-brief" class="secondary">Copy agent brief</button></div><p id="copy-status" role="status"></p>
+<h2>Product and architecture</h2><p>Serve a dated JSON snapshot first. Let the browser request current data where upstream CORS permits. Keep immutable snapshots, provenance and source licences in the repository. Precompute indexes and graphs for predictable loading.</p>
+<div class="architecture"><div><strong>Upstream sources</strong><span>OWASP public JSON, GitHub, Wikimedia</span></div><div><strong>Collection workflow</strong><span>Capture, validate, preserve evidence</span></div><div><strong>Versioned repository</strong><span>Snapshots, graph, index, provenance</span></div><div><strong>Browser experience</strong><span>Directory, graph, archive, live fetch</span></div></div>
+<h2>What is working here</h2><ul><li>Search and filter 347 captured projects.</li><li>Inspect explicit project relationships in a navigable graph.</li><li>Search 7,265 archived wiki titles, plus the two captured page bodies.</li><li>Load live project JSON and archive pages directly in the browser, subject to upstream access.</li><li>Download a source package with Python collectors and a proposed daily GitHub Actions workflow.</li></ul>
+<h2>Freshness and history</h2><p>Record capture time, source update time and the last successful check independently. Keep a stable identity map between old wiki paths, GitHub website repositories and current slugs. A recovered document’s source date is distinct from today’s retrieval date.</p>
+<h2>Decisions for the implementing agent</h2><ul><li>Choose the destination repository and confirm source-specific republication terms.</li><li>Connect the collector and review the proposed 06:00 UTC daily schedule.</li><li>Expand full-text historical coverage and map old pages to current projects.</li><li>Check source schema changes, missing classifications, expired media and error recovery.</li><li>Map each demonstrated behaviour to the team’s actual RiskMandate policy definition and version.</li></ul>
+<h2>RiskMandate demonstration</h2><p>Record the requested action, policy ID and version, decision, supporting evidence, any approval and the action taken. Demonstrate a successful run, conflicting records and a retry. Policy mapping and enforcement remain implementation work.</p>
+<h2>Conversation context</h2><p>An earlier decision to use Claude could not be confirmed in the conversation available here. The handover is written to work with Claude or another coding agent.</p>
+<h2>Readiness and scope</h2><p>This private research site supports review of captured public source material. Automated collection is inactive until a destination repository is connected. The current OWASP API’s stability and reuse terms, historical archive completeness and full original-page rendering remain open verification items.</p>
+<h2>Research sources</h2><ul id="owasp-sources"></ul>
+</section>
+<section id="spotify" class="view prose" hidden>
+<div class="eyebrow">PROVIDER ACCESS REVIEW</div><h1>Can the browser access Spotify?</h1><p class="lede">Yes, for supported user data after Spotify authorisation. OAuth permissions, app quotas and platform terms determine access.</p>
+<div class="archive-note"><strong>Research reviewed 22 November 2026</strong><p>Account access has not been exercised. This page documents the supported integration route and its limits.</p></div>
+<h2>Supported routes</h2><div class="table-wrap"><table><thead><tr><th>Route</th><th>What it offers</th><th>Dependency</th></tr></thead><tbody><tr><td>Browser Web API</td><td>Supported profile, playlist, library and recent-play endpoints</td><td>Registered Spotify app, exact redirect URI, user consent and OAuth with PKCE</td></tr><tr><td>MCP connector</td><td>Agent-facing tools over a provider integration</td><td>Connector capabilities, its authentication and upstream permissions</td></tr><tr><td>Account data export</td><td>JSON packages, including extended streaming history</td><td>User requests and supplies the selected export</td></tr></tbody></table></div>
+<p>An MCP connector and a browser client can expose different capabilities. Each still needs the upstream authentication and permissions. A signed-in Spotify tab alone does not authorise another site’s JavaScript to read private data.</p>
+<h2>Authentication and deployment constraints</h2><p>Spotify recommends PKCE for browser apps. Request minimum scopes and keep client secrets out of frontend code. Development mode currently requires a Premium app owner and supports up to five allowlisted users. Developer-account quotas are shared across development apps.</p>
+<h2>Historical data</h2><p>The recently played endpoint is a bounded recent-history feed. Spotify’s extended streaming history export is documented as covering the account lifetime. The export can contain identifiers and network information, so select the files and fields needed for the intended private feature.</p>
+<h2>Reuse and agent limits</h2><p>Spotify’s Developer Policy restricts content analysis, recreating its core experience, standalone metadata services and ingestion of Spotify Content into AI models. The noncommercial purpose of this project still requires compliance with those terms. Confirm the exact feature and any required permission before applying the OWASP archive or graph approach to Spotify data.</p>
+<p>A useful first technical proof would display supported account data in a private, authorised browser app and document the fields and scopes. An agent can help implement the app using developer documentation. Any processing of retrieved Spotify Content by an AI model needs separate review against the policy.</p>
+<h2>Connector availability</h2><p>No Spotify plugin was returned by the plugin search available in this session. Other directories and independently hosted MCP servers may offer integrations. Their presence alone does not establish Spotify endorsement or additional data rights.</p>
+<h2>Official Spotify sources</h2><ul id="spotify-sources"></ul>
+</section>
+</main>
+<footer>PrompTugal · Independent source research · <a href="#handover">Sources and handover</a></footer>
+</div>
+<dialog id="detail"><div class="dialog-top"><span id="detail-context"></span><button id="close-detail" class="secondary" aria-label="Close details">Close</button></div><div id="detail-body"></div></dialog>
+</body>
+</html>
