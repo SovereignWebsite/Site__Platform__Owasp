@@ -18,7 +18,7 @@
     add(p.documentation_url, 'Documentation');
     links.append(el('a', { href: '/graph/?project=' + encodeURIComponent(p.slug || p.id), text: 'Connections' }));
     return el('li', { class: 'project' },
-      el('h3', { text: p.title }),
+      el('h2', { text: p.title }),
       el('p', { class: 'tags' },
         el('span', { class: 'tag level-' + levelOf(p), text: levelOf(p) }),
         el('span', { class: 'tag', text: p.category || 'no category' }),
