@@ -1,0 +1,45 @@
+/* The directory and graph pages. Builds on the seed's tokens (--bg, --fg, --muted, --accent, --line) set in each page. */
+main.wide{max-width:64rem;padding-top:3rem}
+.top.wide{max-width:64rem}
+.snapshot{font-size:.95rem;color:var(--fg);background:rgba(127,127,127,.08);border:1px solid var(--line);border-radius:6px;padding:.7rem .9rem;margin:0 0 1rem}
+.snapshot code{font-size:.85em}
+.dim{color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:flex-end;margin:1.2rem 0 .8rem}
+.filters label{display:flex;flex-direction:column;gap:.25rem;font-size:.85rem;font-weight:600;color:var(--fg)}
+.filters label.check{flex-direction:row;align-items:center;gap:.4rem;padding-bottom:.4rem}
+.filters input[type=search],.filters select,.picker select{font:inherit;font-size:.95rem;padding:.4rem .55rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);min-width:12rem}
+.filters input[type=search]{min-width:min(22rem,100%)}
+button.action{font:inherit;font-size:.9rem;font-weight:600;padding:.45rem .9rem;border-radius:6px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+button.action:hover,button.action:focus-visible{background:var(--accent);color:var(--bg)}
+button.action[disabled]{opacity:.6;cursor:progress}
+#count{font-weight:600;color:var(--fg);margin:.4rem 0}
+ul.projects{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:.8rem}
+li.project{border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;margin:0;display:flex;flex-direction:column}
+li.project h3{font-size:1.05rem;margin:0 0 .35rem;color:var(--fg)}
+li.project p{font-size:.88rem;line-height:1.5;margin:0 0 .5rem}
+li.project .desc{color:var(--fg);flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem .4rem;align-items:center}
+.tag{font-size:.75rem;padding:.05rem .45rem;border-radius:999px;border:1px solid var(--line);color:var(--fg)}
+.tag.level-flagship{border-color:var(--accent);color:var(--accent);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:.2rem .8rem}
+.links a{font-size:.85rem}
+table{border-collapse:collapse;font-size:.88rem;margin:.6rem 0 1rem;width:100%}
+caption{text-align:left;color:var(--muted);font-size:.85rem;padding-bottom:.4rem}
+th,td{border-bottom:1px solid var(--line);padding:.3rem .5rem;text-align:left;vertical-align:top;color:var(--fg)}
+#matrix thead th:not(:first-child){text-align:right}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+td.zero{color:var(--muted)}
+.scroll{overflow-x:auto}
+.picker{display:flex;flex-direction:column;gap:.25rem;font-size:.85rem;font-weight:600;margin:.6rem 0}
+#star svg{width:100%;height:auto;max-height:26rem;display:block}
+#star .edge{stroke:var(--line);stroke-width:1.5}
+#star .node{stroke:var(--bg);stroke-width:2}
+#star .k-project{fill:var(--accent)}
+#star .k-category{fill:#b0703a}
+#star .k-level{fill:#6a5fb0}
+#star .k-repository,#star .k-website,#star .k-documentation{fill:var(--muted)}
+#star .lbl{font-size:12px;fill:var(--fg)}
+#star .lbl.title{font-size:14px;font-weight:600}
+#star .kind{fill:var(--muted)}
+ul.stats{color:var(--fg)}
+@media (max-width:40rem){.filters select,.filters input[type=search]{min-width:100%}.filters label{width:100%}}

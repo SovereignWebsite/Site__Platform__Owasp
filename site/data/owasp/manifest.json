@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "latest_snapshot": "20261122T162429Z-b029b3c315",
+  "last_successful_capture_at": "2026-11-22T16:24:26.790914+00:00",
+  "snapshots": [
+    {
+      "snapshot_id": "20261122T162429Z-b029b3c315",
+      "observed_at": "2026-11-22T16:24:26.790914+00:00",
+      "project_count": 347
+    }
+  ]
+}

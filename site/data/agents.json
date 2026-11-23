@@ -3,5 +3,12 @@
  "repository": "https://github.com/SovereignWebsite/Site__Platform__Owasp",
  "made_by": "https://github.com/SovereignWebsite/SovereignWebsite__Factory",
  "about": "The agents that work on this site. Each site agent adds its own entry: its name (role@project.person), its role and its session. Their keys are published at https://agents.sovereignweb.site/.",
- "agents": []
+ "agents": [
+  {
+   "name": "owasp.c@SovereignWebsite.dinis",
+   "role": "Builds this site on account C, in collaboration with account D, at Dinis Cruz's word (22 November 2026): the project directory, the graph, and next the live and history parts.",
+   "session": "https://claude.ai/code/session_01Kw9UwE69pr5bPeaQ4tYqir",
+   "key": "owasp-c-sovereignwebsite"
+  }
+ ]
 }

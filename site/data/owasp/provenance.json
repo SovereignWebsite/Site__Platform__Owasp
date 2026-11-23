@@ -1,0 +1,33 @@
+{
+ "about": "Where the OWASP data on this site comes from, under which terms, and how it reached this repository. Read this before reusing any file under /data/owasp/.",
+ "unofficial": "This site is not made or endorsed by OWASP. OWASP is a registered trademark of the OWASP Foundation, Inc.",
+ "licence": {
+  "content": "OWASP project titles, categories, maturity labels, links and descriptions are OWASP Foundation content. owasp.org states: \"Unless otherwise specified, all content on the site is Creative Commons Attribution-ShareAlike v4.0 and provided without warranty of service or accuracy.\" They are republished here under CC BY-SA 4.0, with attribution to the OWASP Foundation and owasp.org, and the same licence applies to the files under /data/owasp/.",
+  "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "source_statement": "owasp.org site footer, read on 22 November 2026",
+  "changes_made": "Selected fields only; descriptions reduced from HTML to plain text; media links left out (some are expiring signed links); graph derived from the published fields. Nothing else is changed: categories, maturity labels and descriptions are OWASP's own words.",
+  "open": "The project list endpoint (owasp.org/api/public/projects/list) is used by OWASP's own website and has no published stability or reuse statement of its own. The site-wide CC BY-SA 4.0 statement is taken to cover it; if OWASP says otherwise, these files come down and the site links instead."
+ },
+ "snapshots": [
+  {
+   "snapshot_id": "20261122T162429Z-b029b3c315",
+   "observed_at": "2026-11-22T16:24:26.790914+00:00",
+   "sources": [
+    "https://owasp.org/api/public/projects/list?limit=1000",
+    "https://owasp.org/api/public/projects/counts"
+   ],
+   "source_body_sha256": {
+    "list": "a331b1db5c320489b53432e5ab2ce56fecfceb1bd7b2d96b4e27f92058046596",
+    "counts": "9d42c44dda416db886f65af6aa80ce701bf52cb7e1d71dd53f0bb4ca75e176eb"
+   },
+   "captured_by": "A ChatGPT research conversation for Dinis Cruz (22 November 2026), with its collector scripts/capture.py (Python standard library).",
+   "custody": "Routed unchanged to this repository's branch inbox/chatgpt-owasp-handover-2026-11-22 (commit cecab44, folder handover/2026-11-22-chatgpt/research/OWASP.organization/data/), then copied byte for byte to /data/owasp/ by owasp.c@SovereignWebsite.dinis.",
+   "files_sha256": {
+    "projects.json": "857cd39c839d84b247f7adc063aff92478ba91b7b7316720a77fff80822f5d8f",
+    "graph.json": "2ea663eebb51a1d1536d44408d599e27617eed6ddd7b6c6805504eea41f2e992",
+    "validation.json": "933378b9d077720dbc2709c8c42380b7fe5c90fe831b2ac7bead0301c8659c77"
+   },
+   "validation_note": "OWASP's counts endpoint gives 347 projects and maturity counts that sum to 331. The 16 not counted carry the project_type value \"other\" in the list; they are shown as \"other\", not given a level."
+  }
+ ]
+}
