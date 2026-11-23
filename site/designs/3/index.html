@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Signal Board, design 3 of OWASP</title>
+<meta name="description" content="Design 3 of owasp.platform.sovereignweb.site, Signal Board: Dark first: the snapshot as a board of signals, categories as bars with their numbers, the tools as switches.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OWASP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://owasp.platform.sovereignweb.site/designs/3/">
+<meta property="og:title" content="Signal Board, design 3 of OWASP">
+<meta property="og:description" content="Design 3 of owasp.platform.sovereignweb.site, Signal Board: Dark first: the snapshot as a board of signals, categories as bars with their numbers, the tools as switches.">
+<meta property="og:image" content="https://owasp.platform.sovereignweb.site/assets/share/card-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OWASP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Signal Board, design 3 of OWASP">
+<meta name="twitter:description" content="Design 3 of owasp.platform.sovereignweb.site, Signal Board: Dark first: the snapshot as a board of signals, categories as bars with their numbers, the tools as switches.">
+<meta name="twitter:image" content="https://owasp.platform.sovereignweb.site/assets/share/card-1200x630.jpg">
+<link rel="canonical" href="https://owasp.platform.sovereignweb.site/designs/3/">
+<style>
+*{box-sizing:border-box}
+html{color-scheme:light dark;-webkit-text-size-adjust:100%}
+body{margin:0;font:1.0625rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);overflow-wrap:break-word}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:.5rem;z-index:99;background:var(--bg);color:var(--fg);padding:.5rem .9rem;border:2px solid var(--focus)}
+.skip:focus{left:1rem}
+main *{min-width:0}
+.chrome{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:flex-end;position:relative;z-index:5;padding-top:.5rem}
+.chrome .by{margin:0 auto 0 0;font-size:.9rem;color:var(--muted)}
+.chrome .by a{color:var(--fg)}
+.chrome details{position:relative}
+.chrome summary{cursor:pointer;list-style:none;min-height:44px;display:inline-flex;align-items:center;padding:.35rem .8rem;border:1px solid var(--ctl);border-radius:999px;font-size:.9rem;background:var(--bg);color:var(--fg)}
+.chrome summary::-webkit-details-marker{display:none}
+.chrome summary::after{content:"";width:.45rem;height:.45rem;margin-left:.5rem;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.chrome details[open] summary::after{transform:rotate(-135deg)}
+.chrome ul{position:absolute;right:0;top:calc(100% + .35rem);margin:0;padding:.4rem;list-style:none;min-width:15rem;max-width:calc(100vw - 2rem);background:var(--bg);color:var(--fg);border:1px solid var(--ctl);border-radius:.6rem;box-shadow:0 .6rem 1.6rem rgba(0,0,0,.25)}
+.chrome li a{display:block;padding:.55rem .7rem;border-radius:.4rem;color:var(--fg);text-decoration:none;font-size:.95rem}
+.chrome li a:hover,.chrome li a:focus-visible{background:var(--hover)}
+.chrome li a[aria-current]{font-weight:700;text-decoration:underline}
+.chrome .gap{border-top:1px solid var(--ctl);margin-top:.3rem;padding-top:.3rem}
+.chrome small{display:block;font-size:.85rem;color:var(--muted);font-weight:400}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.signin{display:grid;grid-template-columns:1fr auto auto;gap:.4rem .6rem;align-items:end;margin:1.25rem 0 .5rem}
+.signin label{font-size:.9rem;color:var(--muted);grid-row:1}
+.signin label[for=__none]{grid-column:2}
+.signin input,.signin select,.signin button{font:inherit;font-size:1rem;padding:.55rem .7rem;border:1px solid var(--ctl);border-radius:6px;background:var(--field);color:var(--fg);min-height:44px}
+.signin input{grid-column:1;grid-row:2}.signin select{grid-column:2;grid-row:2}
+.signin button{grid-column:3;grid-row:2;background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:700;cursor:pointer}
+@media (max-width:30rem){.signin{grid-template-columns:1fr auto}.signin button{grid-column:1/-1;grid-row:3}}
+.status{font-weight:700;min-height:1.6em}
+.note{font-size:.95rem;color:var(--muted)}
+button.small,.out select{font:inherit;font-size:1rem;padding:.4rem .7rem;border:1px solid var(--ctl);border-radius:6px;background:var(--field);color:var(--link);font-weight:700;min-height:44px;cursor:pointer}
+.out select{color:var(--fg);font-weight:400}
+.out label{color:var(--muted)}
+#forget{margin:.3rem 0}
+.out h3{font-size:1.1rem;margin:1rem 0 .3rem}
+.out table{border-collapse:collapse;width:100%;font-size:.95rem}
+.out caption{text-align:left;font-weight:700;padding:.4rem 0}
+.out th,.out td{text-align:left;vertical-align:top;padding:.45rem .6rem;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.out thead th{color:var(--muted);font-size:.9rem}
+.scroll{overflow-x:auto;margin:1rem 0}
+.out table{border-collapse:collapse;width:100%;font-size:.95rem}
+.out caption{text-align:left;font-weight:700;padding:.4rem 0}
+.out th,.out td{text-align:left;vertical-align:top;padding:.45rem .6rem;border-bottom:1px solid var(--line)}
+.out thead th{color:var(--muted);font-size:.9rem}
+.out th .sub{display:block;font-weight:400;color:var(--muted);font-size:.875rem}
+.out tr.group th{background:var(--hover);font-size:.875rem;letter-spacing:.06em;text-transform:uppercase}
+.out td.vals{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
+.out td.ok{color:var(--ok);font-weight:700;white-space:nowrap}
+.out td.bad{color:var(--bad);font-weight:700}
+.out td.num{text-align:right;font-variant-numeric:tabular-nums}
+.sent{font-size:.9rem;color:var(--muted)}
+footer{padding:2rem 0 3rem;font-size:.95rem}
+footer nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
+footer nav a{min-height:44px;display:inline-flex;align-items:center}
+@media print{.chrome,.skip,.signin,#forget{display:none}}
+
+.plain{padding-left:1.2rem}.plain li{margin:.5rem 0}
+.credit{font-size:.95rem;color:var(--muted)}
+.tbox{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+caption{text-align:left;font-weight:700;padding:.3rem 0}
+th,td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--line)}
+td{font-variant-numeric:tabular-nums}
+.feat{list-style:none;padding:0;margin:0}
+.feat li{padding:.35rem 0;border-bottom:1px solid var(--line)}
+.feat span{color:var(--muted);font-size:.95rem}
+
+:root{--bg:#0a0c10;--fg:#eef1f5;--muted:#b3bac4;--link:#7fe0c4;--focus:#7fe0c4;--ctl:#7d8592;--hover:#161a21;--field:#11141a;--accent:#7fe0c4;--on-accent:#04140f;--line:#262b34;--ok:#7fe0c4;--bad:#ff9b8a;--panel:#11141a;--bar:#7fe0c4}
+@media (prefers-color-scheme:light){:root{--bg:#eef1f4;--fg:#0b0e12;--muted:#47505b;--link:#0f6b52;--focus:#0f6b52;--ctl:#6c7581;--hover:#dfe4ea;--field:#fff;--accent:#0f6b52;--on-accent:#fff;--line:#c9d0d9;--ok:#0f6b52;--bad:#a13a2a;--panel:#ffffff;--bar:#0f6b52}}
+.wrap{max-width:80rem;margin:0 auto;padding:0 1rem}
+.mast{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem 1rem;padding:.5rem 0}
+.brand{font:800 1.15rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;color:var(--fg);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.own{display:flex;flex-wrap:wrap;gap:.25rem 1rem;font-size:.95rem}.own a{color:var(--fg);min-height:44px;display:inline-flex;align-items:center}
+.top{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));padding:1.5rem 0;align-items:end}
+.k{font:700 .85rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0}
+h1{font:800 clamp(3rem,12vw,7rem)/.95 ui-monospace,Menlo,Consolas,monospace;margin:.3rem 0 1rem;letter-spacing:-.02em}
+h2{font:800 1rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;margin:0 0 .75rem;color:var(--accent)}
+.big{font:800 clamp(3rem,10vw,6rem)/1 ui-monospace,Menlo,Consolas,monospace;color:var(--accent);margin:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:.6rem;padding:1.1rem 1.2rem;margin:1rem 0}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.bars li{display:grid;grid-template-columns:9rem 1fr 3rem;gap:.75rem;align-items:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem}
+.bars .t{height:.9rem;background:var(--hover);border-radius:.2rem;overflow:hidden}
+.bars .t i{display:block;height:100%;background:var(--bar)}
+.bars b{text-align:right}
+@media (max-width:30rem){.bars li{grid-template-columns:1fr 3rem}.bars .t{grid-column:1/-1;grid-row:2}}
+.switches{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
+details.data{margin-top:.75rem}details.data summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700}
+footer{border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap"><nav class="chrome" aria-label="Designs and the Sovereign Website family">
+<p class="by"><a href="/">OWASP</a>, an unofficial site</p>
+<details><summary>Choose a design</summary><ul><li><a href="/designs/1/">1. Card Catalogue<small>A library card catalogue: one drawer per category, its count on the label, the two tools as the reading room.</small></a></li><li><a href="/designs/2/">2. Maturity Ladder<small>The projects as a ladder of maturity, incubator to flagship, each rung its count and its flagship names.</small></a></li><li><a href="/designs/3/" aria-current="page">3. Signal Board<small>Dark first: the snapshot as a board of signals, categories as bars with their numbers, the tools as switches.</small></a></li><li><a href="/designs/4/">4. Field Guide<small>A field guide: the featured projects as specimens, then how to find the rest.</small></a></li><li><a href="/designs/5/">5. Brief<small>Everything on one plain page, for reading fast or printing.</small></a></li><li class="gap"><a href="/designs/">All five, side by side</a></li><li><a href="/">The site as it is now</a></li></ul></details>
+<details><summary>Sovereign Website</summary><ul><li><a href="/start/">Start here</a></li><li><a href="/agents/">Use with your AI</a></li><li><a href="/admin/">How this site was made</a></li><li class="gap"><a href="/policy/">How this site is governed</a></li><li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li><li><a href="https://sovereignwebsite.org/">Principles</a></li><li><a href="https://sovereignwebsite.site/">Hosted</a></li><li><a href="https://hub.sovereignweb.site/">Hub</a></li><li><a href="https://agents.sovereignweb.site/">Agents</a></li><li><a href="https://vault.sovereignwebsite.site/">Vault</a></li><li><a href="https://agenticcells.ai/">AgentiCCells</a></li><li><a href="https://riskmandate.ai/">RiskMandate</a></li><li><a href="https://newsroom.sgit.ai/">Newsroom</a></li></ul></details>
+</nav>
+<header class="mast"><a class="brand" href="/">OWASP</a><nav class="own" aria-label="This site"><a href="/projects/">Projects</a><a href="/graph/">Graph</a><a href="/start/">Start here</a><a href="/agents/">Use with your AI</a></nav></header>
+<main id="main"><div class="top"><div><p class="k">owasp.platform.sovereignweb.site</p><h1>OWASP</h1><p>What OWASP offers and how to use it, from its public material. An unofficial site, not made or endorsed by OWASP.</p></div>
+<div><p class="big">347</p><p>projects in the snapshot observed 2026-11-22</p></div></div>
+<section class="panel" aria-labelledby="h-cat"><h2 id="h-cat">By category</h2><ul class="bars"><li><span>Other</span><span class="t" aria-hidden="true"><i style="width:100%"></i></span><b>197</b></li><li><span>Tool</span><span class="t" aria-hidden="true"><i style="width:29%"></i></span><b>57</b></li><li><span>Documentation</span><span class="t" aria-hidden="true"><i style="width:21%"></i></span><b>42</b></li><li><span>Training</span><span class="t" aria-hidden="true"><i style="width:6%"></i></span><b>12</b></li><li><span>Standards</span><span class="t" aria-hidden="true"><i style="width:6%"></i></span><b>11</b></li><li><span>Code</span><span class="t" aria-hidden="true"><i style="width:6%"></i></span><b>11</b></li><li><span>Framework</span><span class="t" aria-hidden="true"><i style="width:4%"></i></span><b>7</b></li><li><span>Supply Chain</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>2</b></li><li><span>WAF</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>2</b></li><li><span>AI/ML Security</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>1</b></li><li><span>Guide</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>1</b></li><li><span>Mobile Security</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>1</b></li><li><span>API Security</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>1</b></li><li><span>Vulnerability Management</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>1</b></li><li><span>IoT/OT Security</span><span class="t" aria-hidden="true"><i style="width:1%"></i></span><b>1</b></li></ul>
+<details class="data"><summary>Show the data</summary><div class="tbox" tabindex="0" role="region" aria-label="Projects by category"><table><caption>Projects by category</caption><thead><tr><th scope="col">Category</th><th scope="col">Projects</th></tr></thead><tbody><tr><th scope="row">Other</th><td>197</td></tr><tr><th scope="row">Tool</th><td>57</td></tr><tr><th scope="row">Documentation</th><td>42</td></tr><tr><th scope="row">Training</th><td>12</td></tr><tr><th scope="row">Standards</th><td>11</td></tr><tr><th scope="row">Code</th><td>11</td></tr><tr><th scope="row">Framework</th><td>7</td></tr><tr><th scope="row">Supply Chain</th><td>2</td></tr><tr><th scope="row">WAF</th><td>2</td></tr><tr><th scope="row">AI/ML Security</th><td>1</td></tr><tr><th scope="row">Guide</th><td>1</td></tr><tr><th scope="row">Mobile Security</th><td>1</td></tr><tr><th scope="row">API Security</th><td>1</td></tr><tr><th scope="row">Vulnerability Management</th><td>1</td></tr><tr><th scope="row">IoT/OT Security</th><td>1</td></tr></tbody></table></div></details><p class="credit">Figures from the site’s snapshot of OWASP’s public project list, observed 2026-11-22 (347 projects). Project titles, categories and maturity labels are OWASP Foundation content, CC BY-SA 4.0, from owasp.org.</p></section>
+<div class="switches"><section class="panel" aria-labelledby="h-here"><h2 id="h-here">What is here</h2><ul class="plain"><li><a href="/projects/">Projects</a>: every OWASP project in a dated snapshot of OWASP’s public list, to search and filter, with a button to compare it with OWASP’s live counts.</li><li><a href="/graph/">Graph</a>: how the projects group by category and maturity level, and what each one links to, with the published field behind every link.</li></ul></section>
+<section class="panel" aria-labelledby="h-next"><h2 id="h-next">Coming next</h2><p>Coming next: OWASP’s history (the old wiki and past project pages, with the gaps shown) and more live views read in your browser from OWASP’s public sources. The plan is in the <a href="https://github.com/SovereignWebsite/Site__Platform__Owasp/blob/dev/docs/plan.md">repository</a>.</p><p>This site was made by one request to the Sovereign Website pipeline. Its files, its history and its address are in a repository its owner controls, and can move anywhere.</p></section></div>
+</main>
+<footer>
+<nav aria-label="About this site"><a href="/start/">Start here</a> <a href="/agents/">Use with your AI</a> <a href="/admin/">How this site was made</a> <a href="/policy/">How this site is governed</a></nav>
+<p>A sovereign website, made with the <a href="https://sovereignwebsite.org/">open pattern</a>. Source: <a href="https://github.com/SovereignWebsite/Site__Platform__Owasp">github.com/SovereignWebsite/Site__Platform__Owasp</a>.</p>
+</footer>
+</div></body>
+</html>
